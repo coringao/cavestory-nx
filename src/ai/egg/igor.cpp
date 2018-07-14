@@ -35,7 +35,7 @@ void ai_npc_igor(Object *o)
 {
 	switch(o->state)
 	{
-		case 0:		// init, standing/panting
+		case 0:		// init, standing/painting
 			o->xinertia = 0;
 			o->frame = 0;
 			o->animtimer = 0;

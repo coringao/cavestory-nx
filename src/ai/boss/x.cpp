@@ -945,7 +945,3 @@ void ai_x_defeated(Object *o)
 		break;
 	}
 }
-
-
-
-

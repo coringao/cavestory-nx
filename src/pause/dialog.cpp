@@ -87,11 +87,9 @@ void Dialog::UpdateSizePos()
         DLG_H = 200;
     }
 
-    fCoords.x = DLG_X;
-    fCoords.y = DLG_Y;
-    fCoords.w = DLG_W;
-    fCoords.h = DLG_H;
-    fTextX = (fCoords.x + 48);
+	fCoords.x = ((DLG_W / 2) - (fCoords.w / 2)) + DLG_X;
+	fCoords.y = ((DLG_H / 2) - (fCoords.h / 2)) + DLG_Y;
+	fTextX = (fCoords.x + 34);
 }
 
 void Dialog::SetSize(int w, int h)
@@ -252,10 +250,10 @@ void Dialog::RunInput()
 	}
 	else fRepeatTimer = 0;
 	
-	if (buttonjustpushed() || justpushed(RIGHTKEY) || justpushed(LEFTKEY) || justpushed(ENTERKEY))
+	if (justpushed(JUMPKEY) || justpushed(RIGHTKEY) || justpushed(LEFTKEY) || justpushed(ENTERKEY))
 	{
 		int dir = (!inputs[LEFTKEY] || buttonjustpushed() || justpushed(RIGHTKEY) || justpushed(ENTERKEY)) ? 1 : -1;
-		if (buttonjustpushed() || justpushed(ENTERKEY)) dir = 0;
+		if (justpushed(JUMPKEY) || justpushed(ENTERKEY)) dir = 0;
 		
 		ODItem *item = NULL;
 		if (fCurSel>=0 && fCurSel<(int)fItems.size())
@@ -288,7 +286,7 @@ void Dialog::RunInput()
 		}
 	}
 	
-	if (justpushed(ESCKEY))
+	if (justpushed(ESCKEY) || justpushed(FIREKEY))
 	{
 		sound(SND_MENU_MOVE);
 		if (ondismiss) (*ondismiss)();

@@ -350,13 +350,13 @@ int ino;//, key;
 	
 	for (int i=0;i<INPUT_COUNT;i++)
 	{
-		if( mappings[i].jaxis >= 0 ) // reset all mapped axises
+		if( mappings[i].jaxis >= 0 ) // reset all mapped axes
 		{
 			inputs[i] = false;
 		}
 	}
 	
-	// now get current values of all axises
+	// now get current values of all axes
 	for (int ax=0;ax<SDL_JoystickNumAxes(joy);ax++)
 	{
 		int value = SDL_JoystickGetAxis(joy, ax);

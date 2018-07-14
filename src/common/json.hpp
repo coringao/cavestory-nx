@@ -8280,7 +8280,7 @@ class basic_json
     @brief create a JSON value
 
     This is a "catch all" constructor for all compatible JSON types; that is,
-    types for which a `to_json()` method exsits. The constructor forwards the
+    types for which a `to_json()` method exists. The constructor forwards the
     parameter @a val to that method (to `json_serializer<U>::to_json` method
     with `U = uncvref_t<CompatibleType>`, to be exact).
 

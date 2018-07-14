@@ -372,7 +372,7 @@ int xinertia, yinertia;
 			{
 				// have enemies hurt you when you touch them
 				// (solid-brick objects do this in PHandleSolidBrickObjects)
-				// SOLID_MUSHY objects doen't let the player sink enough for a smaller hitbox to collide
+				// SOLID_MUSHY objects doesn't let the player sink enough for a smaller hitbox to collide
 				// so run detection with a bigger one.
 				// this can be "easily" tested on balcony: you should be able to stand on mimiga, but not on Igor.
 				if (o->flags & FLAG_SOLID_MUSHY)
@@ -422,7 +422,7 @@ int xinertia, yinertia;
 			{
 				// have enemies hurt you when you touch them
 				// (solid-brick objects do this in PHandleSolidBrickObjects)
-				// SOLID_MUSHY objects doen't let the player sink enough for a smaller hitbox to collide
+				// SOLID_MUSHY objects doesn't let the player sink enough for a smaller hitbox to collide
 				// so run detection with a bigger one.
 				// this can be "easily" tested on balcony: you should be able to stand on mimiga, but not on Igor.
 				if (o->flags & FLAG_SOLID_MUSHY)

@@ -42,7 +42,7 @@ struct stNoteChannel
 	int panning;			// last panning value sent to note_gen
 	int length;				// # of beats of the current note left to generate
 	
-	int number;				// the chanel number of this channel
+	int number;				// the channel number of this channel
 };
 
 

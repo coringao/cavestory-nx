@@ -65,7 +65,7 @@ bool Game::init()
 {
 int i;
 
-	memset(&game, 0, sizeof(game));
+	game = {};
 	tsc = new TSC();
 	// set default properties
 	memset(objprop, 0, sizeof(objprop));
@@ -428,7 +428,10 @@ extern int flipacceltime;
 	
 	// draw foreground map tiles
 	if (!flipacceltime)
+	{
 		map_draw(TA_FOREGROUND);
+		map_draw_oob();
+	}
 	
 	// draw carets (always-on-top effects such as boomflash)
 	Carets::DrawAll();
@@ -702,6 +705,7 @@ void AssignExtraSprites(void)
 	objprop[OBJ_IGOR_BALCONY].sprite = SPR_IGOR;
 	
 	objprop[OBJ_X_TARGET].hurt_sound = SND_ENEMY_HURT_COOL;
+	objprop[OBJ_X_INTERNALS].hurt_sound = SND_ENEMY_HURT_COOL;
 	objprop[OBJ_X_INTERNALS].shaketime = 9;
 	objprop[OBJ_X_MAINOBJECT].xponkill = 1;
 	

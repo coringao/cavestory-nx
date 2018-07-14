@@ -386,7 +386,7 @@ static void run_init(Object *o)
 		}
 		break;
 		
-		// standing idle & panting
+		// standing idle & painting
 		// this state doesn't seem to ever be used;
 		// AFAIK can only be triggered by modifying the script.
 		case 5:
@@ -531,7 +531,7 @@ static void run_defeat(Object *o)
 		// script: crystal up and away
 		case 520:
 		{
-			crystal_ymark = -(32 * CSFI);
+			crystal_ymark = -(128 * CSFI);
 		}
 		break;
 	}
@@ -628,7 +628,7 @@ void ai_boss_doctor_frenzied(Object *o)
 				o->frame = 4;
 			}
 			else
-			{	// panting animation
+			{	// painting animation
 				ANIMATE(10, 1, 2);
 				
 				// "redsplode" attack if possible

@@ -17,10 +17,12 @@ using namespace Tileset;
 
 #include "common/stat.h"
 #include "common/misc.h"
+#include "common/json.hpp"
 #include "game.h"
 #include "player.h"
 #include "settings.h"
 #include "ResourceManager.h"
+#include <fstream>
 
 
 stMap map;
@@ -38,6 +40,9 @@ unsigned char tilecode[MAX_TILES];			// tile codes for every tile in current til
 unsigned int tileattr[MAX_TILES];			// tile attribute bits for every tile in current tileset
 unsigned int tilekey[MAX_TILES];			// mapping from tile codes -> tile attributes
 
+
+unsigned char oob_tile_count;
+unsigned int oob_tiles[4];
 
 // load stage "stage_no", this entails loading the map (pxm), enemies (pxe), tileset (pbm),
 // tile attributes (pxa), and script (tsc).
@@ -75,6 +80,10 @@ char fname[MAXPATHLEN];
 	map_set_backdrop(stages[stage_no].bg_no);
 	map.scrolltype = stages[stage_no].scroll_type;
 	map.motionpos = 0;
+
+	// optional metadata
+	sprintf(fname, "StageMeta/%s.json", mapname);
+	load_meta(ResourceManager::getInstance()->getLocalizedPath(fname));
 	
 	return 0;
 }
@@ -297,6 +306,62 @@ int nEntities;
 				    // now that it's all set up, execute OnSpawn,
 				    // since we didn't do it in CreateObject.
 				    o->OnSpawn();
+
+				    stat("spawning extra motion wall");
+				    o = CreateObject(((x) * TILE_W) * CSFI, \
+										 ((y - TILE_H) * TILE_H) * CSFI, type,
+										 0, 0, dir, NULL, CF_NO_SPAWN_EVENT);
+				    o->id1 = id1;
+				    o->id2 = id2;
+				    o->flags |= flags;
+				
+				    ID2Lookup[o->id2] = o;
+				
+				    // now that it's all set up, execute OnSpawn,
+				    // since we didn't do it in CreateObject.
+				    o->OnSpawn();
+
+				    stat("spawning extra motion wall");
+				    o = CreateObject(((x+22) * TILE_W) * CSFI, \
+										 ((y - TILE_H) * TILE_H) * CSFI, type,
+										 0, 0, dir, NULL, CF_NO_SPAWN_EVENT);
+				    o->id1 = id1;
+				    o->id2 = id2;
+				    o->flags |= flags;
+				
+				    ID2Lookup[o->id2] = o;
+				
+				    // now that it's all set up, execute OnSpawn,
+				    // since we didn't do it in CreateObject.
+				    o->OnSpawn();
+
+				    stat("spawning extra motion wall");
+				    o = CreateObject(((x) * TILE_W) * CSFI, \
+										 ((y + TILE_H) * TILE_H) * CSFI, type,
+										 0, 0, dir, NULL, CF_NO_SPAWN_EVENT);
+				    o->id1 = id1;
+				    o->id2 = id2;
+				    o->flags |= flags;
+				
+				    ID2Lookup[o->id2] = o;
+				
+				    // now that it's all set up, execute OnSpawn,
+				    // since we didn't do it in CreateObject.
+				    o->OnSpawn();
+
+				    stat("spawning extra motion wall");
+				    o = CreateObject(((x+22) * TILE_W) * CSFI, \
+										 ((y + TILE_H) * TILE_H) * CSFI, type,
+										 0, 0, dir, NULL, CF_NO_SPAWN_EVENT);
+				    o->id1 = id1;
+				    o->id2 = id2;
+				    o->flags |= flags;
+				
+				    ID2Lookup[o->id2] = o;
+				
+				    // now that it's all set up, execute OnSpawn,
+				    // since we didn't do it in CreateObject.
+				    o->OnSpawn();
 				}
 
 			}
@@ -366,6 +431,58 @@ unsigned char tc;
 	
 	fclose(fp);
 	return 0;
+}
+
+void load_meta(const std::string& fname)
+{
+std::ifstream fl;
+
+	oob_tile_count = 0;
+
+	fl.open(widen(fname), std::ifstream::in | std::ifstream::binary);
+	if (fl.is_open())
+	{
+		try
+		{
+			nlohmann::json metadata_root = nlohmann::json::parse(fl);
+
+			// Load out-of-bounds details.
+			if (metadata_root.find("out-of-bounds") != metadata_root.end())
+			{
+				auto oob = metadata_root.at("out-of-bounds");
+
+				// Save OOB tile IDs for rendering.
+				if (oob.is_array())
+				{
+					oob_tile_count = oob.size();
+					if (oob_tile_count == 1 || oob_tile_count == 4)
+					{
+						stat("load_meta: reading %d out-of-bounds tiles", oob_tile_count);
+						int i = 0;
+						for (auto it = oob.begin(); it != oob.end(); ++it, i++)
+						{
+							oob_tiles[i] = *it;
+						}
+					}
+					else
+					{
+						staterr("load_meta: 'out-of-bounds' tile count can only be 1 or 4, found %d", oob_tile_count);
+						oob_tile_count = 0;
+					}
+				}
+				else
+				{
+					staterr("load_meta: metadata field 'out-of-bounds' must be an array containing one or more tile IDs", fname.c_str());
+				}
+			}
+
+			stat("load_meta: '%s' finished parsing", fname.c_str());
+		}
+		catch (nlohmann::json::exception& e)
+		{
+			staterr("load_meta: JSON parsing error in file '%s': %s", fname.c_str(), e.what());
+		}
+	}
 }
 
 bool load_stages(void)
@@ -505,7 +622,8 @@ int x, y;
 		break;
 		
 		case BK_FASTLEFT:		// Ironhead
-			map.parscroll_x += 6;
+			if (game.mode == GM_NORMAL && !game.frozen && !game.paused)
+				map.parscroll_x += 6;
 			map.parscroll_y = 0;
 		break;
 		
@@ -537,7 +655,7 @@ int x, y;
 	int h = backdrop[map.backdrop]->Height();
 	
 	int mapx = (map.xsize * TILE_W);
-	int mapy = (map.ysize * TILE_H);
+//	int mapy = (map.ysize * TILE_H);
 	// hack for ending Maze map
     if (game.curmap == 74)
     {
@@ -547,7 +665,7 @@ int x, y;
 
     if (game.curmap == 31 && widescreen)
     {
-        map.parscroll_y-= 36;
+//        map.parscroll_y-= 36;
 //        mapy+=64;
     }
 
@@ -555,7 +673,7 @@ int x, y;
 	{
 		for(x=0;x<SCREEN_WIDTH+map.parscroll_x; x+=w)
 		{
-		    if ( ((x - map.parscroll_x) < mapx) && ((y - map.parscroll_y) < mapy))
+//		    if ( ((x - map.parscroll_x) < mapx) && ((y - map.parscroll_y) < mapy))
 			DrawSurface(backdrop[map.backdrop], x - map.parscroll_x, y - map.parscroll_y);
 		}
 	}
@@ -564,7 +682,7 @@ int x, y;
 // blit OSide's BK_FASTLEFT_LAYERS
 void DrawFastLeftLayered(void)
 {
-    int layer_ys[] = { 80, 122, 145, 176, 240 };
+    int layer_ys[] = { 87, 122, 145, 176, 240 };
     if (widescreen)
     {
         layer_ys[4] = 272;
@@ -575,8 +693,9 @@ void DrawFastLeftLayered(void)
     int y1, y2;
     int i, x;
 
-	if (--map.parscroll_x <= -(480*SCALE*2))
-		map.parscroll_x = 0;
+	if ((game.mode == GM_NORMAL || game.mode == GM_TITLE) && !game.frozen && !game.paused)
+		if (--map.parscroll_x <= -(480*SCALE*2))
+			map.parscroll_x = 0;
 	
 	y1 = x = 0;
 	// fix for extra height
@@ -639,8 +758,8 @@ int water_x, water_y;
 	if (!map.waterlevelobject)
 		return;
 	
-	water_x = -(map.displayed_xscroll / CSFI);
-	water_x %= SCREEN_WIDTH;
+	water_x = (map.displayed_xscroll / CSFI);
+	water_x = ((-water_x) % TILE_W) - TILE_W;
 	
 	water_y = (map.waterlevelobject->y / CSFI) - (map.displayed_yscroll / CSFI);
 	
@@ -693,7 +812,7 @@ int scroll_x, scroll_y;
 				//fixes drawing of debug tiles in Stream and Fall maps
 				if( ((game.curmap == 71) && (tilecode[t] == 0x41))
 				    ||
-				    ((game.curmap == 31) && (tilecode[t] == 0x46))
+				    ((game.curmap == 31) /*&& (tilecode[t] == 0x46)*/)
 				) {}
 				else
 					if ((tileattr[t] & TA_FOREGROUND) == foreground)
@@ -706,6 +825,46 @@ int scroll_x, scroll_y;
 	}
 }
 
+
+// draw out-of-bounds tiles, if any.
+void map_draw_oob()
+{
+int x, y;
+int mapx, mapy;
+int blit_x, blit_y, blit_x_start;
+int scroll_x, scroll_y;
+
+	if (oob_tile_count == 0)
+		return;
+
+	scroll_x = (map.displayed_xscroll / CSFI);
+	scroll_y = (map.displayed_yscroll / CSFI);
+
+	mapx = (scroll_x / TILE_W);
+	mapy = (scroll_y / TILE_H);
+
+	blit_y = ((-scroll_y) % TILE_H) - TILE_H;
+	blit_x_start = ((-scroll_x) % TILE_W) - TILE_W;
+
+	for(y=0; y <= (SCREEN_HEIGHT / TILE_H)+2; y++)
+	{
+		blit_x = blit_x_start;
+
+		for(x=0; x <= (SCREEN_WIDTH / TILE_W)+2; x++)
+		{
+			if (mapx+x <= 0 || mapy+y <= 0 || mapx+x > map.xsize || mapy+y > map.ysize)
+			{
+				int t = oob_tiles[0];
+				if (oob_tile_count == 4)
+					t = oob_tiles[abs(mapx+x+1) % 2 + (abs(mapy+y+1) % 2)*2];
+				draw_tile(blit_x, blit_y, t);
+			}
+			blit_x += TILE_W;
+		}
+
+		blit_y += TILE_H;
+	}
+}
 
 /*
 void c------------------------------() {}
@@ -1001,18 +1160,25 @@ void map_ChangeTileWithSmoke(int x, int y, int newtile, int nclouds, bool boomfl
 
 
 
-const char *map_get_stage_name(int mapno)
+const std::string& map_get_stage_name(int mapno)
 {
-	if (mapno == STAGE_KINGS)
-		return "";//"Studio Pixel Presents";
-	
-	return stages[mapno].stagename;
+	static std::string stagename;
+	stagename = (std::string)"stage_" + stages[mapno].filename;
+	if (_(stagename) == stagename)
+	{
+		stagename = stages[mapno].stagename;
+		if (mapno == STAGE_KINGS)
+			stagename = "";//"Studio Pixel Presents";
+		return _(stagename);
+	}
+	else
+		return _(stagename);
 }
 
 // show map name for "ticks" ticks
 void map_show_map_name()
 {
-	game.mapname_x = (SCREEN_WIDTH / 2) - (GetFontWidth(_(map_get_stage_name(game.curmap))) / 2);
+	game.mapname_x = (SCREEN_WIDTH / 2) - (GetFontWidth(map_get_stage_name(game.curmap)) / 2);
 	game.showmapnametime = 120;
 }
 
@@ -1020,7 +1186,7 @@ void map_draw_map_name(void)
 {
 	if (game.showmapnametime)
 	{
-		font_draw(game.mapname_x, 84, _(map_get_stage_name(game.curmap)), 0xFFFFFF, true);
+		font_draw(game.mapname_x, 84, map_get_stage_name(game.curmap), 0xFFFFFF, true);
 		game.showmapnametime--;
 	}
 }
@@ -1059,7 +1225,7 @@ Object *FindObjectByID2(int id2)
 	Object *result = ID2Lookup[id2];
 	
 	if (result)
-		staterr("FindObjectByID2: ID2 %04d found: type %s; coords: (%d, %d)", id2, DescribeObjectType(ID2Lookup[id2]->type), ID2Lookup[id2]->x / CSFI,ID2Lookup[id2]->y / CSFI);
+		stat("FindObjectByID2: ID2 %04d found: type %s; coords: (%d, %d)", id2, DescribeObjectType(ID2Lookup[id2]->type), ID2Lookup[id2]->x / CSFI,ID2Lookup[id2]->y / CSFI);
 	else
 		staterr("FindObjectByID2: no such object %04d", id2);
 	

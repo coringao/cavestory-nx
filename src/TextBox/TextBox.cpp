@@ -90,6 +90,14 @@ void TextBox::SetVisible(bool enable, uint8_t flags)
 	SetFlags(flags);
 }
 
+void TextBox::RecalculateOffsets()
+{
+	fCoords.w = MSG_W;
+	fCoords.h = MSG_H;
+	fCoords.x = ((SCREEN_WIDTH / 2) - (MSG_W / 2));
+	fCoords.y = (fFlags & TB_DRAW_AT_TOP) ? MSG_UPPER_Y : ((SCREEN_HEIGHT - MSG_H) - 2);
+}
+
 void TextBox::SetFlags(uint8_t flags)
 {
 	fFlags = flags;
@@ -384,16 +392,16 @@ void c------------------------------() {}
 // the specified coordinates.
 void TextBox::DrawFrame(int x, int y, int w, int h)
 {
-	draw_sprite_chopped(x, y, SPR_TEXTBOX, 0, w, 8);		// draw top
+	draw_sprite_chopped(x, y, SPR_TEXTBOX, 0, w, 8, 210);		// draw top
 	y += 8;
 	
 	for(int draw=0;draw<h-16;draw+=8)
 	{
-		draw_sprite_chopped(x, y, SPR_TEXTBOX, 1, w, 8);	// draw middle
+		draw_sprite_chopped(x, y, SPR_TEXTBOX, 1, w, 8, 210);	// draw middle
 		y += 8;
 	}
 	
-	draw_sprite_chopped(x, y, SPR_TEXTBOX, 2, w, 8);		// draw bottom
+	draw_sprite_chopped(x, y, SPR_TEXTBOX, 2, w, 8, 210);		// draw bottom
 }
 
 

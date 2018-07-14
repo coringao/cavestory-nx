@@ -60,6 +60,7 @@ void c------------------------------() {}
 void TB_SaveSelect::ResetState()
 {
 	fVisible = false;
+	fAborted = false;
 }
 
 void TB_SaveSelect::SetVisible(bool enable, bool saving)
@@ -105,6 +106,11 @@ bool TB_SaveSelect::IsVisible()
 	return fVisible;
 }
 
+bool TB_SaveSelect::Aborted()
+{
+	return fAborted;
+}
+
 /*
 void c------------------------------() {}
 */
@@ -147,8 +153,9 @@ int start;
 		fPicXOffset = -24;
 	}
 	
-	if (buttonjustpushed() || justpushed(ENTERKEY))
+	if (justpushed(JUMPKEY) || justpushed(ENTERKEY))
 	{
+		fAborted = false;
 		if (fSaving)
 			game_save(fCurSel);
 			
@@ -163,6 +170,18 @@ int start;
 		ScriptInstance *s = game.tsc->GetCurrentScriptInstance();
 		if (s) s->delaytimer = 0;
 	}
+	else if (justpushed(FIREKEY) || justpushed(ESCKEY))
+	{
+		fAborted = true;
+		SetVisible(false);
+		ScriptInstance *s = game.tsc->GetCurrentScriptInstance();
+		if (s)
+		{
+			s->delaytimer = 0;
+			game.tsc->JumpScript(0);
+		}
+	}
+
 }
 
 
@@ -183,8 +202,8 @@ const int w = fCoords.w - 33;
 	
 	if (fHaveProfile[index])
 	{
-		const char *stage = map_get_stage_name(p->stage);
-		font_draw(x+8, y-1, _(stage));
+		const std::string& stage = map_get_stage_name(p->stage);
+		font_draw(x+8, y-1, stage);
 		
 		// draw health.
 		DrawHealth(x+w, y, p);
