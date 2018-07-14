@@ -12,7 +12,7 @@
 #include "../game.h"
 #include "pxt.h"
 #include "org.h"
-#include "ogg11.h"
+#include "remastered.h"
 #include "sound.h"
 #include "../common/stat.h"
 #include "../ResourceManager.h"
@@ -43,8 +43,8 @@ const char *org_names[] =
 static const char bossmusic[] = { 4, 7, 10, 11, 15, 16, 17, 18, 21, 22, 31, 33, 35, 0 };
 
 static const char *org_dir = "org/";
-static const char *ogg_dir = "Ogg/";
-static const char *ogg11_dir = "Ogg11/";
+static const char *new_dir = "musics/new/";
+static const char *remastered_dir = "musics/remastered/";
 
 bool sound_init(void)
 {
@@ -173,14 +173,14 @@ char fname[MAXPATHLEN];
 	}
 }
 
-static void start_ogg11_track(int songno, bool resume, const char* dir)
+static void start_remastered_track(int songno, bool resume, const char* dir)
 {
     if (songno==0)
     {
-        ogg11_stop();
+        remastered_stop();
         return;
     }
-	ogg11_start(org_names[songno], dir, resume ? music_lastsongpos() : 0, resume ? songlooped : false);
+	remastered_start(org_names[songno], dir, resume ? music_lastsongpos() : 0, resume ? songlooped : false);
 }
 
 
@@ -204,7 +204,7 @@ void music(int songno, bool resume)
 				break;
 			case 1:
 			case 2:
-				ogg11_stop();
+				remastered_stop();
 				break;
 		}
 		return;
@@ -216,10 +216,10 @@ void music(int songno, bool resume)
 			start_track(songno,resume);
 			break;
 		case 1:
-			start_ogg11_track(songno,resume, ogg_dir);
+			start_remastered_track(songno,resume, new_dir);
 			break;
 		case 2:
-			start_ogg11_track(songno,resume, ogg11_dir);
+			start_remastered_track(songno,resume, remastered_dir);
 			break;
 	}
 }
@@ -270,21 +270,21 @@ void music_set_enabled(int newstate)
 				}
 				break;
 			case 1:
-				if (play != ogg11_is_playing())
+				if (play != remastered_is_playing())
 				{
 					if (play)
-						start_ogg11_track(cursong,0, ogg_dir);
+						start_remastered_track(cursong,0, new_dir);
 					else
-						ogg11_stop();
+						remastered_stop();
 				}
 				break;
 			case 2:
-				if (play != ogg11_is_playing())
+				if (play != remastered_is_playing())
 				{
 					if (play)
-						start_ogg11_track(cursong,0, ogg11_dir);
+						start_remastered_track(cursong,0, remastered_dir);
 					else
-						ogg11_stop();
+						remastered_stop();
 				}
 				break;
 		}
@@ -300,7 +300,7 @@ void music_set_newmusic(int newstate)
 		settings->new_music = newstate;
 		
 		org_stop();
-		ogg11_stop();
+		remastered_stop();
 		
 		switch (newstate)
 		{
@@ -308,10 +308,10 @@ void music_set_newmusic(int newstate)
 				start_track(cursong,0);
 				break;
 			case 1:
-				start_ogg11_track(cursong, 0, ogg_dir);
+				start_remastered_track(cursong, 0, new_dir);
 				break;
 			case 2:
-				start_ogg11_track(cursong, 0, ogg11_dir);
+				start_remastered_track(cursong, 0, remastered_dir);
 				break;
 		}
 	}
@@ -326,7 +326,7 @@ void music_fade()
 			break;
 		case 1:
 		case 2:
-			ogg11_fade();
+			remastered_fade();
 			break;
 	}
 }
@@ -344,7 +344,7 @@ void music_run_fade()
 			break;
 		case 1:
 		case 2:
-			ogg11_run_fade();
+			remastered_run_fade();
 			break;
 	}
 }
