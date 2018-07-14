@@ -1,0 +1,7 @@
+**version: 1.0.0**
+  * Added game data files (Developed by Studio Pixel)
+  * Added game engine files (NXEngine-evo)
+  * Created 'disclaimer.txt' explaining the originality of the files
+  * Added icon in format (PNG) size 512 pixels
+  * Added the BSD-2-Clause and GPLv3 licenses
+  * Created the game manpage
