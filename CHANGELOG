@@ -5,3 +5,6 @@
   * Added icon in format (PNG) size 512 pixels
   * Added the BSD-2-Clause and GPLv3 licenses
   * Created the game manpage
+  * Fixed spelling in some files
+  * Added language directory in translations: CN, FR, DE, IT, PL, RU
+  * Added new and remastered music in ogg format
