@@ -1,7 +1,7 @@
 Cave Story NX
 =============
 
-Cave Story NX is a nostalgic side-action adventure game to jump and shoot,
+**Cave Story NX** is a nostalgic side-action adventure game to jump and shoot,
 using the modified NXEngine-evo engine[1].
 
 NXEngine-evo is a somewhat updated/refactored version of NXEngine[2].
