@@ -1,0 +1,26 @@
+<Cave Story ~ Doukutsu Monogatari> (c) 2004 Studio Pixel
+(Graphics, Music, Sound, Story, and Characters - Property of Studio Pixel)
+
+Most of the files contained were created by Daisuke Amaya, otherwise known by
+the stage name "Pixel", unless otherwise specified.
+
+This program is freeware. Neither Studio Pixel[1] nor Aeon Genesis[2] is
+responsible if it does Bad Things to your computer.
+(Of course, it shouldn't, but that's beside the point.)
+
+I used them without permission. You absolutely can't use these in anything
+commercial. Nicalis[3] owns the exclusive rights (in the west at least).
+
+Not to mention it would be pretty disrespectful to the original creator.
+
+[1] https://studiopixel.sakura.ne.jp
+
+[2] https://agtp.romhack.net/project.php?id=cavestory
+
+[3] https://nicalis.com
+
+* Author: Studio Pixel <amaya.pixel@gmail.com>
+
+* Data acquired on the website, copied and decompressed the binaries:
+- Link: https://www.cavestory.org/downloads/cavestoryen.zip
+- Author: Carlos Donizete Froes [a.k.a coringao] <coringao@riseup.net>
