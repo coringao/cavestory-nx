@@ -1,10 +1,10 @@
 Cave Story NX
 =============
 
-**Cave Story NX** is a nostalgic side action adventure game to jump and shoot,
-using the NXEngine-evo[1] engine.
+Cave Story NX is a nostalgic side-action adventure game to jump and shoot,
+using the modified NXEngine-evo engine[1].
 
-This is a somewhat upgraded/refactored version of NXEngine[2].
+NXEngine-evo is a somewhat updated/refactored version of NXEngine[2].
 
 [1] https://github.com/nxengine/nxengine-evo
 
@@ -58,7 +58,7 @@ To create the archive binary, do it from the source directory.
 
     $ rm -rf build cavestory-nx
 
-**License**
+**Licenses**
 -----------
 > The Cave Story NX project is distributed under the terms of the BSD-2-Clause
 > license that can be found in the [LICENSE](LICENSE) file. 
