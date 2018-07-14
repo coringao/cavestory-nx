@@ -1,4 +1,3 @@
-
 #include "nx.h"
 #include <cstdarg>
 #if !defined(_WIN32)
@@ -271,7 +270,7 @@ bool freshstart;
 #endif
 	SDL_free(basepath);
 	
-	char* prefpath = SDL_GetPrefPath("cavestory-nx", "nxengine");
+	char* prefpath = SDL_GetPrefPath("cavestory-nx", "logs");
 	std::string logpath = std::string(prefpath) + "debug.log";
 	SDL_free(prefpath);
 	
