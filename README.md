@@ -2,7 +2,7 @@ Cave Story NX
 =============
 
 **Cave Story NX** is a nostalgic side-action adventure game to jump and shoot,
-using the modified NXEngine-evo engine[1].
+using the modified NXEngine-evo[1] engine.
 
 NXEngine-evo is a somewhat updated/refactored version of NXEngine[2].
 
@@ -13,20 +13,46 @@ NXEngine-evo is a somewhat updated/refactored version of NXEngine[2].
 **Game History:**
 -----------------
 
-You control a little amnesiac who runs around helping out these rabbit-ish
-creatures called Mimigas while trying to find your way out of the giant cave
-inside the floating island which makes up the game's setting.
+The story revolves around a character who mysteriously awakens inside
+a cave with no memory or recollection of how he got there.
 
-You can expand your health meter by collecting Life Capsules, while you can get
-stronger by collecting energy to boost your firearms output. 
+It turns out that the cave is actually the interior of a large floating island
+that is populated by rabbit-like creatures.
 
-Each weapon can be built up to the maximum level (3) fairly quickly,
-but taking damage will drain energy from its experience meter,
-sometimes causing it to level down. 
+The cave also hides a very powerful and magical artifact known
+as the Demon Crown that is being sought by an army of robots.
 
-Given how quickly they power up this only tends to be an issue during
-boss fights, and even then there´s usually plenty of opportunities for
-collecting more weapon energy.
+It is up to the players to guide the protagonist through the various levels of
+the cave fighting back the robots in order to obtain the artifact.
+
+**Game Play and Features**
+--------------------------
+
+Cave Story is a side-scrolling platform game that can be played with either
+the keyboard or a gamepad. Players will solve puzzles and fight enemies on each
+map while trying to collect weapons and items to help him along the way.
+
+Includes some RPG elements with more than three dozen different items
+that can be found and stored in the player's inventory for later use.
+
+Players won't get tired of fighting the same monsters over and over again
+simply because there are so many different monsters in game and there always
+seems to be something new to tackle where each representing a unique set of
+challenges that the player must overcome to defeat.
+
+**Development**
+---------------
+
+The game Cave Story[1] was released in 2004 and made available in the freeware
+version after more than five years in development by Daisuke Amaya otherwise
+known by the stage name "Pixel", who designed and coded the game by himself.
+
+Since the release 'Pixel' has developed a number of other platforms,
+retro style games through his company Studio Pixel[2].
+
+[1] https://www.cavestory.org
+
+[2] https://studiopixel.sakura.ne.jp
 
 **Installation dependency:**
 ----------------------------
@@ -59,7 +85,8 @@ To create the archive binary, do it from the source directory.
     $ rm -rf build cavestory-nx
 
 **Licenses**
------------
+------------
+
 > The Cave Story NX project is distributed under the terms of the BSD-2-Clause
 > license that can be found in the [LICENSE](LICENSE) file. 
 > We encourage new contributors to distribute files under this license.
