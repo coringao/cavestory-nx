@@ -179,7 +179,7 @@ bool Game::setmode(int newmode, int param, bool force)
 	{
 		if (tickfunctions[game.mode].OnEnter(param))
 		{
-			staterr("game.setmode: initialization failed for mode %d", newmode);
+			staterr("game.setmode: initilization failed for mode %d", newmode);
 			game.mode = GM_NONE;
 			return 1;
 		}
@@ -204,7 +204,7 @@ bool Game::pause(int pausemode, int param)
 	{
 		if (tickfunctions[game.paused].OnEnter(param))
 		{
-			staterr("game.pause: initialization failed for mode %d", pausemode);
+			staterr("game.pause: initilization failed for mode %d", pausemode);
 			game.paused = 0;
 			return 1;
 		}
