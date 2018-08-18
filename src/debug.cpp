@@ -72,44 +72,6 @@ void DrawDebug(void)
 		}
 	}
 	
-	/*if (game.debug.debugmode)
-	{
-		//debug("%d fps", game.debug.fps);
-		
-		if (game.debug.god)
-		{
-			//debug("<GOD MODE>");
-			player->weapons[player->curWeapon].level = 2;
-			player->weapons[player->curWeapon].xp = player->weapons[player->curWeapon].max_xp[2];
-			player->weapons[player->curWeapon].ammo = player->weapons[player->curWeapon].maxammo;
-			player->hp = player->maxHealth;
-		}
-		
-		debug("%d,%d", (player->x/CSFI)/TILE_W, (player->y/CSFI)/TILE_H);
-		debug("[%c%c%c%c]", player->blockl?'l':' ', player->blockr?'r':' ', player->blocku?'u':' ', player->blockd?'d':' ');
-		//debug("%d", player->xinertia);
-		//debug("%d", player->yinertia);*/
-		/*
-		debug("Have Puppy: %d", game.flags[274]);
-		debug("Kakeru: %d", game.flags[275]);
-		debug("Runner Gone: %d", game.flags[276]);
-		debug("No Shinobu: %d", game.flags[277]);
-		debug("Door Open: %d", game.flags[278]);
-		debug("Mick: %d", game.flags[279]);
-		debug("Gave 1st: %d", game.flags[590]);
-		debug("Gave 2nd: %d", game.flags[591]);
-		debug("Gave 3rd: %d", game.flags[592]);
-		debug("Gave 4th: %d", game.flags[593]);
-		debug("Gave 5th: %d", game.flags[594]);
-		debug("-");
-		{
-			int i;
-			for(i=0;i<player->ninventory;i++)
-				debug("%d", player->inventory[i]);
-		}
-		*/
-	//}
-	
 	debug_draw();
 	DrawDebugMarks();
 }
