@@ -641,7 +641,7 @@ int cmdip;
 			s->ynj_jump = -1;
 		}
 		else
-		{	// pause script until answer is receieved
+		{	// pause script until answer is received
 			return;
 		}
 	}
