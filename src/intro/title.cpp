@@ -35,7 +35,7 @@ static struct
 	{0xFFFFFFFF, SPR_CS_MYCHAR, 24, 9}		// default
 };
 
-// artifical fake "loading" delay between selecting an option and it being executed,
+// artificial fake "loading" delay between selecting an option and it being executed,
 // because it actually doesn't look good if we respond instantly.
 #define SELECT_DELAY			30
 #define SELECT_LOAD_DELAY		20		// delay when leaving the multisave Load dialog
