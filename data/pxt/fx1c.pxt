@@ -12,7 +12,7 @@ volume_model :4
 volume_freq  :1.00
 volume_top   :31
 volume_offset:0
-initialY:63
+initially:63
 ax      :64
 ay      :63
 bx      :225
@@ -34,7 +34,7 @@ volume_model :3
 volume_freq  :0.00
 volume_top   :0
 volume_offset:0
-initialY:0
+initially:0
 ax      :0
 ay      :63
 bx      :45
@@ -56,7 +56,7 @@ volume_model :0
 volume_freq  :0.00
 volume_top   :0
 volume_offset:0
-initialY:0
+initially:0
 ax      :0
 ay      :0
 bx      :0
@@ -78,7 +78,7 @@ volume_model :0
 volume_freq  :0.00
 volume_top   :0
 volume_offset:0
-initialY:0
+initially:0
 ax      :0
 ay      :0
 bx      :0
