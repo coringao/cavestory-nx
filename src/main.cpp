@@ -271,7 +271,7 @@ bool freshstart;
 #endif
 	SDL_free(basepath);
 	
-	char* prefpath = SDL_GetPrefPath("nxengine", "nxengine-evo");
+	char* prefpath = SDL_GetPrefPath("cavestory-nx", "logs");
 	std::string logpath = std::string(prefpath) + "debug.log";
 	SDL_free(prefpath);
 	
