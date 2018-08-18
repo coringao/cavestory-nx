@@ -465,7 +465,7 @@ int tile;
 	attr |= (player->GetAttributes(&pattrpoints[1], 1, &tile) & ~TA_WATER);
 	
 	// If the tile has "hurt" bit, we recheck it with the the different bottom attrpoint.
-	// This fixes bottom spikes in water level, last cave... Standart bottom attrpoint
+	// This fixes bottom spikes in water level, last cave... Standard bottom attrpoint
 	// allows intersection with spike only for 1 pixel, but origianl game allows 8 pixels 
 	// of safe intersection.
 	if (attr & TA_HURTS_PLAYER)
