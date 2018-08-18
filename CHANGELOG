@@ -1,6 +1,15 @@
+**version: 1.2.0**
+  * Updated game engine files (nxengine-evo 2.6.3 modified)
+  * Add oob tiles for hell ending
+  * Fixed: (nxengine-evo)
+    - Debug console backbuffer
+    - Fire key cancels warp selection
+  * Dynamic title backgrounds
+  * Add noloop files support for music
+
 **version: 1.0.0**
   * Added game data files (Developed by Studio Pixel)
-  * Added game engine files (nxengine-evo 2.3.6 modified)
+  * Added game engine files (nxengine-evo 2.6.3 modified)
   * Created 'disclaimer.txt' explaining the originality of the files
   * Added icon in format (PNG) size 512 pixels
   * Added the BSD-2-Clause and GPLv3 licenses
