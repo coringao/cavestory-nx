@@ -416,7 +416,7 @@ bool Handle_Falling_Left(Object *o)
 	if (map.scrolltype == BK_FASTLEFT || \
 		map.scrolltype == BK_FASTLEFT_LAYERS)
 	{
-		if (o->state < 100)			// initilize
+		if (o->state < 100)			// initialize
 		{
 			o->state += 100;
 			o->yinertia = random(-0x20, 0x20);
