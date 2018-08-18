@@ -14,6 +14,7 @@ struct remasteredSong
 	bool fading;
 	uint32_t last_fade_time;
 	uint32_t last_pos;
+	bool doloop;
 };
 
 bool remastered_load(const std::string& fname, const std::string& dir);
