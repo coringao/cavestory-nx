@@ -1,3 +1,4 @@
+
 #include "nx.h"
 #include <cstdarg>
 #if !defined(_WIN32)
@@ -270,7 +271,7 @@ bool freshstart;
 #endif
 	SDL_free(basepath);
 	
-	char* prefpath = SDL_GetPrefPath("cavestory-nx", "logs");
+	char* prefpath = SDL_GetPrefPath("nxengine", "nxengine-evo");
 	std::string logpath = std::string(prefpath) + "debug.log";
 	SDL_free(prefpath);
 	
@@ -360,6 +361,11 @@ bool freshstart;
 			if (!inhibit_loadfade) fade.Start(FADE_IN, FADE_CENTER);
 			else inhibit_loadfade = false;
 		}
+		else if (game.switchstage.mapno == TITLE_SCREEN)
+        {
+            stat("= Title screen =");
+            game.curmap = TITLE_SCREEN;
+        }
 		else
 		{
 			if (game.switchstage.mapno == NEW_GAME || \
