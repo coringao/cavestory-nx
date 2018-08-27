@@ -6,6 +6,9 @@ using the modified NXEngine-evo[1] engine.
 
 NXEngine-evo is a somewhat updated/refactored version of NXEngine[2].
 
+> This engine is being rewritten particularly for the game data contained
+> in this project.
+
 [1] https://github.com/nxengine/nxengine-evo
 
 [2] http://nxengine.sourceforge.net
