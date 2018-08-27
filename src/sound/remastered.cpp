@@ -50,8 +50,8 @@ bool remastered_load(const std::string& fname, const std::string& dir)
 		staterr("Mix_LoadMUS(): %s\n", Mix_GetError());
 		return false;
 	}
-	
-	if (ResourceManager::fileExists(ResourceManager::getInstance()->getLocalizedPath(dir + fname + ".noloop")))
+
+	if (ResourceManager::fileExists(ResourceManager::getInstance()->getLocalizedPath(dir + fname + ".nl")))
 	{
 		song.doloop = false;
 	}
@@ -59,7 +59,7 @@ bool remastered_load(const std::string& fname, const std::string& dir)
 	{
 		song.doloop = true;
 	}
-	
+
 	return true;
 }
 
@@ -84,26 +84,26 @@ void musicFinished11()
 bool remastered_start(const std::string& fname, const std::string& dir, int startbeat, bool loop)
 {
 	remastered_stop();		// stop any old music
-	
+
 	if (!remastered_load(fname, dir))
 	{
 	    return false;
 		song.playing = false;
 	}
-	
+
 	song.last_pos = 0;
-	
+
 	song.playing = true;
 	song.fading = false;
-	
+
 	song.volume = 75;
-	
+
 	do_loop = false;
-	
+
 	looped = loop;
-	
+
 	song.last_pos = SDL_GetTicks()-startbeat;
-	
+
 	if (looped)
 	{
 		Mix_PlayMusic(song.loop,0);
@@ -195,8 +195,7 @@ void remastered_run_fade()
 		{
 			remastered_set_volume(newvol);
 		}
-		
+
 		song.last_fade_time = curtime;
 	}
 }
-
