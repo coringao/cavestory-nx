@@ -1,6 +1,6 @@
 **version: 1.2.0**
   * Updated game engine files (nxengine-evo 2.6.3 modified)
-  * Add oob tiles for hell ending
+  * Fixed: Re-written files in pbm format
   * Fixed: (nxengine-evo)
     - Debug console backbuffer
     - Fire key cancels warp selection
