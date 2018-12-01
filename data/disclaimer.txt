@@ -4,23 +4,17 @@
 Most of the files contained were created by Daisuke Amaya, otherwise known by
 the stage name "Pixel", unless otherwise specified.
 
-This program is freeware. Neither Studio Pixel[1] nor Aeon Genesis[2] is
-responsible if it does Bad Things to your computer.
-(Of course, it shouldn't, but that's beside the point.)
+This program has been found as freeware and identified as being free from known
+restrictions under copyright law, including all related rights and neighbors[1].
 
-I used them without permission. You absolutely can't use these in anything
-commercial. Nicalis[3] owns the exclusive rights (in the west at least).
+[1] https://creativecommons.org/publicdomain/mark/1.0
 
-Not to mention it would be pretty disrespectful to the original creator.
+You may copy, modify, distribute and perform the work, even for commercial
+purposes, without permission, as long as the original author is mentioned.
 
-[1] https://studiopixel.sakura.ne.jp
-
-[2] https://agtp.romhack.net/project.php?id=cavestory
-
-[3] https://nicalis.com
-
-* Author: Studio Pixel <amaya.pixel@gmail.com>
+- Developed: Daisuke Amaya "Pixel" <amaya.pixel@gmail.com>
+- Link: https://studiopixel.sakura.ne.jp
 
 * Data acquired on the website, copied and decompressed the binaries:
 - Link: https://www.cavestory.org/downloads/cavestoryen.zip
-- Author: Carlos Donizete Froes [a.k.a coringao] <coringao@riseup.net>
+- Author: (c) 2018 Carlos Donizete Froes [a.k.a coringao] <coringao@riseup.net>
