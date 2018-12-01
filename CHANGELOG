@@ -1,3 +1,8 @@
+**version: 1.2.1**
+  * Adjusted bounding box and fireball spawn position
+  * Updated the game data license
+  * Adding widescreen image
+
 **version: 1.2.0**
   * Updated game engine files (nxengine-evo 2.6.3 modified)
   * Fixed: Re-written files in pbm format
