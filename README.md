@@ -90,14 +90,20 @@ To create the archive binary, do it from the source directory.
 **Licenses**
 ------------
 
-> The Cave Story NX project is distributed under the terms of the BSD-2-Clause
-> license that can be found in the [LICENSE](LICENSE) file. 
+> The **Cave Story NX** project is distributed under the terms of
+> the BSD-2-Clause license that can be found in the [LICENSE](LICENSE) file. 
 > We encourage new contributors to distribute files under this license.
 >
-> The NXEngine/NXEngine-evo is distributed under the terms
+> The **NXEngine/NXEngine-evo** is distributed under the terms
 > of the [GNU General Public License version 3 or later](src/LICENSE.GPLv3),
 > as it contains code made available under various GPL-compliant licenses.
 > We encourage new contributors to distribute files under this license.
+>
+> **Game data developed by Daisuke Amaya and property of Studio Pixel**
+> has been identified as free from known restrictions under the copyright law,
+> including all related rights and neighbors. You can copy, modify, distribute
+> and perform the work, even for commercial purposes, all without
+> asking permission. https://creativecommons.org/publicdomain/mark/1.0
 
 * Copyright (c) 2004 **Game data developed by Studio Pixel**
 * Copyright (c) 2010-2016 **NXEngine by Caitlin Shaw**
