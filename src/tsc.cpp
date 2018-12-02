@@ -530,6 +530,8 @@ ScriptPages found_pageno;
 	_curscript.running = true;
 	
 	textbox.ResetState();
+	player->hurt_time = 0;
+
 #ifdef TRACE_SCRIPT
 	stat("  - Started script %04d", scriptno);
 #endif
@@ -781,6 +783,7 @@ int cmdip;
 			{
 				game.frozen = true;
 				player->inputs_locked = false;
+				player->hurt_time = 0;
 				statusbar.xpflashcount = 0;			// looks odd if this happens after a long <PRI, even though it's technically correct
 			}
 			break;
@@ -789,6 +792,7 @@ int cmdip;
 			{
 				game.frozen = false;
 				player->inputs_locked = true;
+				player->hurt_time = 0;
 			}
 			break;
 			
