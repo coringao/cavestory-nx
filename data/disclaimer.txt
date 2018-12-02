@@ -1,4 +1,4 @@
-<Cave Story ~ Doukutsu Monogatari> (c) 2004 Studio Pixel
+<Cave Story ~ Doukutsu Monogatari> Copyright (c) 2004 Studio Pixel
 (Graphics, Music, Sound, Story, and Characters - Property of Studio Pixel)
 
 Most of the files contained were created by Daisuke Amaya, otherwise known by
@@ -9,12 +9,35 @@ restrictions under copyright law, including all related rights and neighbors[1].
 
 [1] https://creativecommons.org/publicdomain/mark/1.0
 
-You may copy, modify, distribute and perform the work, even for commercial
-purposes, without permission, as long as the original author is mentioned.
+You can copy, modify, distribute and perform the work, even for commercial
+purposes, all without asking permission. As long as the original author is
+mentioned in the software.
 
-- Developed: Daisuke Amaya "Pixel" <amaya.pixel@gmail.com>
-- Link: https://studiopixel.sakura.ne.jp
+- Developed: Daisuke "Pixel" Amaya <amaya.pixel@gmail.com>
+- Link: https://studiopixel.sakura.ne.jp (Language in Japanese)
+- Link: https://www.cavestory.org (Language in English)
+- Note: If you would like to contact Pixel directly then feel free to do so,
+however keep in mind that he speaks Japanese for the most part.
+
+--------------------------------------------------------------------------------
+
+Copyright (c) 2005 Aeon Genesis Translations - https://agtp.romhack.net
+Main Team:
+Gideon Zhi - Project leader, Hacker, Translation
+Shih Tzu - Lead script translator
+
+Special Thanks to...
+- "Shih Tzu", for facilitating contact with Pixel himself.
+- Pixel himself, for creating the game, allowing us to produce an
+  English version of it, and for putting up with what must have seemed an awful
+  amount of nagging questions on my part. :)
+  You've got the patience of a saint, and this wouldn't be done without you!
+- "sandcrab", who produced an alternate translation of the text for Pixel.
+- Tomato & Bugcatcher, for helping out on a couple tough bits in the text.
+  Cheers!
+
+--------------------------------------------------------------------------------
 
 * Data acquired on the website, copied and decompressed the binaries:
-- Link: https://www.cavestory.org/downloads/cavestoryen.zip
+- Link: https://www.cavestory.org/downloads
 - Author: (c) 2018 Carlos Donizete Froes [a.k.a coringao] <coringao@riseup.net>
