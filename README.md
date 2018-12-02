@@ -31,9 +31,10 @@ the cave fighting back the robots in order to obtain the artifact.
 **Game Play and Features**
 --------------------------
 
-Cave Story is a side-scrolling platform game that can be played with either
-the keyboard or a gamepad. Players will solve puzzles and fight enemies on each
-map while trying to collect weapons and items to help him along the way.
+Cave Story is a Japanese freeware side-scrolling platform game that can be
+played with either the keyboard or a gamepad. Players will solve puzzles
+and fight enemies on each map while trying to collect weapons and items to
+help him along the way.
 
 Includes some RPG elements with more than three dozen different items
 that can be found and stored in the player's inventory for later use.
@@ -53,9 +54,13 @@ known by the stage name "Pixel", who designed and coded the game by himself.
 Since the release 'Pixel' has developed a number of other platforms,
 retro style games through his company Studio Pixel[2].
 
+It has been translated into English by Aeon Genesis Translations[3].
+
 [1] https://www.cavestory.org
 
 [2] https://studiopixel.sakura.ne.jp
+
+[3] https://agtp.romhack.net
 
 **Installation dependency:**
 ----------------------------
@@ -106,6 +111,7 @@ To create the archive binary, do it from the source directory.
 > asking permission. https://creativecommons.org/publicdomain/mark/1.0
 
 * Copyright (c) 2004 **Game data developed by Studio Pixel**
+* Copyright (c) 2005 **Aeon Genesis Translations**
 * Copyright (c) 2010-2016 **NXEngine by Caitlin Shaw**
 * Copyright (c) 2015-2018 **Engine upgraded/refactored by NXEngine-evo**
 * Copyright (c) 2018 Individual work by Carlos Donizete Froes [a.k.a coringao]
