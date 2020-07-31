@@ -69,6 +69,9 @@ On Debian/Ubuntu/GNU/Linux you can get all necessary packages by typing:
 
     # apt install cmake libpng-dev libsdl2-dev libsdl2-mixer-dev
 
+You might need to install a C++ compiler. Suggestion:
+    # apt install g++-10
+
 When all these dependencies are installed to start compiling the game.
 To create the archive binary, do it from the source directory.
 
@@ -79,6 +82,10 @@ To create the archive binary, do it from the source directory.
 **Starting to build:**
 
     $ cmake ..
+
+You might need to supply the location of the C++ compiler
+    $ cmake -DCMAKE_CXX_COMPILER=/usr/bin/g++-10 ..
+ 
 
 **Starting compilation:**
 
